@@ -134,3 +134,85 @@ Important for exams
 - Abstraction = Hiding implementation details
 - Inheritance = Reusing properties of another class
 - Polymorphism = One interface, many forms
+
+# ans the concept task
+
+  -Concept 01: Classes and Objects
+
+১. Class name ও Object:
+
+Class name: Student
+Object: s1। এটা main() function-এ Student s1; লিখে তৈরি করা হয়েছে।
+
+২. Data members ও Member function:
+
+Data members: name (string) এবং studentID (int)
+Member function: displayInfo()। এটা student-এর name ও ID print করে।
+
+৩. Object কিভাবে class-এর member access করে:
+Object dot operator (.) ব্যবহার করে class-এর member access করে।
+
+Data member-এ value দেওয়া: s1.name = "Rahim"; এবং s1.studentID = 210601;
+Function call করা: s1.displayInfo();
+
+এখানে সব member public বলে main() থেকে সরাসরি access করা যায়।
+
+  -Concept 02: Access Modifiers
+
+১. Private ও Public members:
+
+Private member: balance
+Public members: setBalance() এবং getBalance()
+
+২. main() থেকে balance সরাসরি access করার চেষ্টা:
+
+cpp
+int main() {
+    BankAccount acc;
+    acc.balance = 500;   // direct access
+    return 0;
+}
+
+৩. Compilation error:
+
+error: 'double BankAccount::balance' is private within this context
+
+balance private, তাই class-এর বাইরে (main() থেকে) access করা যায় না।
+
+৪. Getter ও Setter কিভাবে controlled access দেয়:
+
+balance সরাসরি বদলানো যায় না। শুধু setBalance() দিয়ে বদলানো এবং getBalance() দিয়ে পড়া যায়।
+Setter-এর ভেতরে validation বসানো যায়, যেমন negative amount reject করা।
+এতে data নিরাপদ থাকে এবং ভুল value ঢোকা আটকানো যায়। একে encapsulation বলে।
+
+  -Concept 03: Constructors
+
+১. দুটো constructor:
+
+Student() হলো default constructor। এটা name = "Unknown" ও id = 0 set করে।
+Student(string n, int i) হলো parameterized constructor। এটা দেওয়া value দিয়ে name ও id set করে।
+
+২. কখন কোনটা call হয়:
+
+Student s1; লিখলে default constructor call হয়, কারণ কোনো argument দেওয়া হয়নি।
+Student s2("Rahim", 210601); লিখলে parameterized constructor call হয়, কারণ দুটো argument দেওয়া হয়েছে।
+
+৩. Parameterized constructor দিয়ে তিনটা object:
+
+cpp
+Student a("Rahim", 210601);
+Student b("Karim", 210602);
+Student c("Fatema", 210603);
+
+a.display();
+b.display();
+c.display();
+
+Output:
+
+Rahim 210601
+Karim 210602
+Fatema 210603
+
+৪. Observation:
+প্রতিটা object-এর নিজের আলাদা name ও id আছে। একটা object-এর data বদলালে অন্য object-এর data বদলায় না। অর্থাৎ প্রতিটা object নিজের data আলাদাভাবে maintain করে।
